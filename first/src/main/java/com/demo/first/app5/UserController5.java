@@ -1,10 +1,9 @@
+// Structuring service layer code for Exceptions
 package com.demo.first.app5;
 
-import com.demo.first.app5.User5;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -75,10 +74,7 @@ public class UserController5 {
         return ResponseEntity.ok(user);
     }
 
-// ************************************************
-
-    // RequestParam bhi multiple pass kar skte hai
-    // http://localhost:8080/user1/search?name=afifa222&email=afifa222@gmail.com
+// *********************** REQUEST PARAM *************************
 
     @GetMapping("/search")
     public ResponseEntity<List<User5>> searchUsers(
@@ -88,6 +84,9 @@ public class UserController5 {
 
         return ResponseEntity.ok(userService.searchUsers(name,email));
     }
+
+//--------------------------- YHI TAK KA SERVICE CODE STRUCTURE KIYE HAI -----------------------------------
+
 
     // "name=afifa222&email=afifa222@gmail.com" :- This part is called query parameter.
 

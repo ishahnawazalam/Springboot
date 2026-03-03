@@ -1,3 +1,5 @@
+// Exception and logger
+
 package com.demo.first.app6;
 
 import org.slf4j.LoggerFactory;
@@ -80,11 +82,6 @@ public class UserController6 {
         return ResponseEntity.ok(user);
     }
 
-// ************************************************
-
-    // RequestParam bhi multiple pass kar skte hai
-    // http://localhost:8080/user1/search?name=afifa222&email=afifa222@gmail.com
-
     @GetMapping("/search")
     public ResponseEntity<List<User6>> searchUsers(
             @RequestParam(required = false,defaultValue = "Aaisha") String name,
@@ -94,20 +91,13 @@ public class UserController6 {
         return ResponseEntity.ok(userService.searchUsers(name,email));
     }
 
-    // "name=afifa222&email=afifa222@gmail.com" :- This part is called query parameter.
+//    ---------------------- YHI TAK SERVICE CODE STRUCTURE KIYA HUA HAI -----------------
+// EXCEPTION HANDLING NOW ::
 
-    // Using all annotation in one method
-    @GetMapping("/info/{id}")
-    public String getInfo(
-            @PathVariable int id,
-            @RequestParam String name,
-            @RequestHeader("User-Agent") String userAgent){
-        return "User Agent: " + userAgent + " : " + id + " : " + name;
-    }
+// EXCEPTION HANDLING METHOD ::
+// If koi bhi IllegalException aati hai poori ki poori apps mei then ye wala method trigger ho jayega
+// Ye method mapped hai sirf illegalArgument exception se mapped hai. To kon sa method kis exception se mapped hai wo @ExceptionHandler btata hai
 
-    // EXCEPTION HANDLING METHOD
-    // If koi bhi IllegalException aati hai poori ki poori apps mei then ye wala method trigger ho jayega
-    // Ye method mapped hai sirf illegalArgument exception se mapped hai. To kon sa method kis exception se mapped hai wo @ExceptionHandler btata hai
 //    @ExceptionHandler(IllegalArgumentException.class)
 //    public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(IllegalArgumentException exception){
 //        Map<String,Object> errorResponse = new HashMap<>();

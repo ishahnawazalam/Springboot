@@ -1,7 +1,5 @@
 package com.demo.first.app3;
 
-
-
 public class User3 {
 
     private int id;

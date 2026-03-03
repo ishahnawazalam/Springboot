@@ -1,3 +1,5 @@
+// @PathVariable and @RequestParam @RequestHeader too
+
 package com.demo.first.app4;
 
 import org.springframework.http.HttpStatus;
@@ -58,6 +60,7 @@ public class UserController1 {
         return new ArrayList<>(userDb.values());
     }
 
+//------------------ Dynamic URL lecture ke liye Code yha se ->  -------------------
     // Dynamic URL
     // creating an endpoint to retrieve only single user
 //    @GetMapping("/{id}")
